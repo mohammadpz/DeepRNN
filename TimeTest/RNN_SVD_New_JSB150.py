@@ -919,7 +919,7 @@ def accEval(model,epoch,ftr,fts,fvl):
 def savehiddenstate(sequences,model,fileName):
   firstLayer=[]
   for sequence in sequences:
-     (_,h)=model.predict(s)
+     (_,h)=model.predict(sequence)
      firstLayer.append(h)
   np.save(fileName,np.array(firstLayer))
   
@@ -987,18 +987,18 @@ if __name__ == "__main__":
     targets.append(s)
   targets=np.array(targets)
   
-  model = MetaRNN(n_in=InputDim, n_out=InputDim, nHidden=nHidden,
-                    learning_rate=0.001, learning_rate_decay=0.999,
-                    n_epochs=n_epochs, activation='tanh', output_type='binary', A=A, B=B, hiddenWeights=None)
+  #model = MetaRNN(n_in=InputDim, n_out=InputDim, nHidden=nHidden,
+                    #learning_rate=0.001, learning_rate_decay=0.999,
+                    #n_epochs=n_epochs, activation='tanh', output_type='binary', A=A, B=B, hiddenWeights=None)
   
   #----Pretraining Hidden To Output Weights----#
-  hiddenWeights=GetWeightsForHidnOut(seq,targets,model,nHidden)
+  #hiddenWeights=GetWeightsForHidnOut(seq,targets,model,nHidden)
   xpt2 = time.strftime('%s')
   timediff1 = int(xpt2) - int(xpt1)
   
   model = MetaRNN(n_in=InputDim, n_out=InputDim, nHidden=nHidden,
                     learning_rate=0.001, learning_rate_decay=0.999,
-                    n_epochs=n_epochs, activation='tanh', output_type='binary', A=A, B=B, hiddenWeights=hiddenWeights)
+                    n_epochs=n_epochs, activation='tanh', output_type='binary', A=A, B=B, hiddenWeights=None)
       
 
   #TRAINING
