@@ -963,9 +963,9 @@ def savehiddenstate(sequences,model,fileName):
   
   
 if __name__ == "__main__":
-  n_epochs=1000
-  InputDim=149
-  nHidden=150
+  n_epochs=2000
+  InputDim=249
+  nHidden=250
 
   #seq=loadDataSetMin(trainingSet)
   #print type(seq)
